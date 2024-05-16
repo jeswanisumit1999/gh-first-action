@@ -12,6 +12,9 @@ jobs:
           echo "Second output"
       - name: Print Goodbye
         run: echo "Job Completed - Goodbye"
+
+      - name: Print Repo Details
+        run: echo "${{ toJson(github) }}"
   
   
     
