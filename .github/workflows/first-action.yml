@@ -4,18 +4,10 @@ jobs:
   first_job:
     runs-on: ubuntu-20.04
     steps:
-      - name: Print Gretting
-        run: echo "Hello GitHub Action"
-      - name: Multi-Line commands
-        run: |
-          echo "First output"
-          echo "Second output"
-      - name: Print Goodbye
-        run: echo "Job Completed - Goodbye"
-
       - name: Print Repo Details
         run: echo "${{ toJson(github) }}"
-  
+      - name: Print Run Number
+        run: echo "${{ github.run_number }}"
   
     
     
