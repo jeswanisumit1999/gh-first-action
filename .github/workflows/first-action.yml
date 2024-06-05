@@ -4,7 +4,8 @@ name: Trigger example
 
 # Controls when the workflow will run
 on:
-  workflow_dispatch
+  push:
+  workflow_dispatch:
   # Triggers the workflow on push or pull request events but only for the "main" branch
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -19,7 +20,7 @@ jobs:
           - os: windows-latest
             node: 16
             npm: 6
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-node@v4
         with:
@@ -27,3 +28,12 @@ jobs:
       - if: ${{ matrix.npm }}
         run: npm install -g npm@${{ matrix.npm }}
       - run: npm --version
+      
+  step-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$selected_color=blue" >> "$GITHUB_OUTPUT"
+        id: Color-Selector
+      - run: echo "### Selcted color is ${{ selectedColor }}"
+        env: 
+          selectedColor: ${{ steps.Color-Selector.selected_color }}
