@@ -32,6 +32,4 @@ jobs:
     steps:
       - run: echo "$selected_color=blue" >> "$GITHUB_OUTPUT"
         id: Color-Selector
-      - run: echo "### Selcted color is ${{ selectedColor }}"
-        env: 
-          selectedColor: ${{ steps.Color-Selector.selected_color }}
+     
