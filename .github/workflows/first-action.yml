@@ -30,6 +30,8 @@ jobs:
   step-summary:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$selected_color=blue" >> "$GITHUB_OUTPUT"
+      - name: Set color
         id: Color-Selector
+        run: echo "$selected_color=blue" >> "$GITHUB_OUTPUT"
+        
      
