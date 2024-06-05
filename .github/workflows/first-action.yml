@@ -30,8 +30,13 @@ jobs:
   step-summary:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
       - name: Set color
-        id: Color-Selector
-        run: echo "$selected_color=blue" >> "$GITHUB_OUTPUT"
-        
+        id: color-selector
+        run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+      - name: Get color
+        env:
+         SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+        run: echo "### The selected color is $SELECTED_COLOR" >> $GITHUB_STEP_SUMMARY
      
